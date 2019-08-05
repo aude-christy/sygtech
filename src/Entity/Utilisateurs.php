@@ -1,23 +1,16 @@
 <?php
 
-class Utilisateurs extends
+abstract class Utilisateurs 
 {
     use EntityIndentifierTrait;
 
-    
+    protected $id;
+
     /**
-     * @ManyTomany(targetEntity="", mappedBy="")
+     * @OneTomany(targetEntity="GDH", mappedBy=" utilisateurs")
+     * @joincolumn( nullable= false)
      */
-    private $rapport;
-
-    /**
-    * @Column(type=string, nullable=true)
-    */
-    private $nom_user;
-
-    /**
-    * @Column(type=string)
-    */
+    
     private $id_user;
 
     /**
@@ -29,11 +22,6 @@ class Utilisateurs extends
     * @Column(type=string)
     */
     private $mdp_user;
-
-    /**
-    * @Column(type=string)
-    */
-    private $adresse_user;
 
     /**
     * @Column(type=string)
