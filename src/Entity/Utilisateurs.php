@@ -28,7 +28,6 @@ abstract class Utilisateurs
     */
 
     private $prenom_user;
-
-
+ 
   
 }
