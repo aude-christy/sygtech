@@ -1,19 +1,17 @@
 <?php
-namespace App\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @Entity
- * @Table(name="villes)
- * @ORM\Entity(repositoryClass="App\Repository\VilleRepository")
- */
-class Ville
+class planning extends
 {
     use EntityIndentifierTrait;
+    
+    /**
+     * @ManyToone(targetEntity="", mappedBy="")
+     * @OneTomany(targetEntity="", mappedBy="")
+     */
+    private $utilisateurs & $interventions;
 
     /**
     * @Column(type=string, nullable=true)
     */
-    private $nom_ville;
+    
+    private $date_planning;
 }

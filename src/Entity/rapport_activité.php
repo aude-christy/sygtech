@@ -1,11 +1,11 @@
 <?php
 
-class fonction extends
+class rapport extends
 {
     use EntityIndentifierTrait;
     
     /**
-     * @ManyToone(targetEntity="", mappedBy="")
+     * @ManyTomany(targetEntity="", mappedBy="")
      */
     private $utilisateurs;
 
@@ -13,11 +13,11 @@ class fonction extends
     * @Column(type=string, nullable=true)
     */
     
-    private $libellé_fonction;
+    private $libellé_rapport;
 
     /**
     * @Column(type=string)
     */
-    private $id_fonction;
+    private $photo;
 
 }

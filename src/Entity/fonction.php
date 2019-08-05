@@ -1,19 +1,23 @@
 <?php
-namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @Entity
- * @Table(name="villes)
- * @ORM\Entity(repositoryClass="App\Repository\VilleRepository")
- */
-class Ville
+class fonction extends
 {
     use EntityIndentifierTrait;
+    
+    /**
+     * @ManyToone(targetEntity="", mappedBy="")
+     */
+    private $utilisateurs;
 
     /**
     * @Column(type=string, nullable=true)
     */
-    private $nom_ville;
+    
+    private $libellé_fonction;
+
+    /**
+    * @Column(type=string)
+    */
+    private $id_fonction;
+
 }
