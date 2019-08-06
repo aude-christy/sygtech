@@ -1,29 +1,33 @@
 <?php
 
-class interventions extends
+class interventions 
 {
     use EntityIndentifierTrait;
 
     
     /**
-     * @OneTomany(targetEntity="", mappedBy="")
+     * @OneTomany(targetEntity="Agences", mappedBy="Interventions")
      */
-    private $agence;
+    private $Agences;
+    
+    public function --construct() 
+    {
 
-    /**
-    * @Column(type=string, nullable=true)
-    */
+        $this->$Agences = new ArrayCollection();
+    }
+    public function addAgences
+    (Agences $Agences)
+    {
+
+        $this->Agences[] = $Agences;
+        return $this;
+    }
+    public getAgences()
+    {
+
+        return $this->Agences;
+    }
     private $libellé_intervention;
-
-    /**
-    * @Column(type=string)
-    */
-    private $id_intervention;
-
-    /**
-    * @Column(type=integer)
-    */
-    private $lieu_intervention;
 
     /**
     * @Column(type=string)
