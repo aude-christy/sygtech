@@ -13,20 +13,6 @@ class interventions
     public function --construct() 
     {
 
-        $this->$Agences = new ArrayCollection();
-    }
-    public function addAgences
-    (Agences $Agences)
-    {
-
-        $this->Agences[] = $Agences;
-        return $this;
-    }
-    public getAgences()
-    {
-
-        return $this->Agences;
-    }
     private $libellé_intervention;
 
     /**
