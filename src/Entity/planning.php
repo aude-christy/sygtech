@@ -1,17 +1,34 @@
 <?php
-class planning extends
+
+class Planning 
 {
     use EntityIndentifierTrait;
     
     /**
-     * @ManyToone(targetEntity="", mappedBy="")
-     * @OneTomany(targetEntity="", mappedBy="")
+     * @ManyToone(targetEntity="Interventions", mappedBy="Planning")
      */
-    private $utilisateurs & $interventions;
+    private $Interventions;
 
-    /**
-    * @Column(type=string, nullable=true)
-    */
+    public function --construct()
+    {
+        
+        $this->$Interventions = new ArrayCollection();
+    }
+
+    public function addInterventions(Interventions $Interventions)
+    {
+        $this->Interventions[] = $Interventions;
+        return $this;
+
+        $entityManager->persist(interventions);
+        $entityManager->flush();
+    }
+
+    public getInterventions()
+    {
+        return $this->Interventions;
+
+    }
     
     private $date_planning;
 }

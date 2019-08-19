@@ -1,23 +1,27 @@
 <?php
 
-class fonction extends
+class Roles
 {
     use EntityIndentifierTrait;
     
     /**
-     * @ManyToone(targetEntity="", mappedBy="")
+     * @ManyToone(targetEntity="Utilisateurs", inversedBy="Roles")
+     * @joincolumn( name="id_Utilisateurs", referencedColumnName= "id" nullable=false)
      */
-    private $utilisateurs;
+    private $Utilisateurs;
 
-    /**
-    * @Column(type=string, nullable=true)
-    */
+    public function 
+    setUtilisateurs(Utilisateurs $Utilisateurs)
+    {
+
+        $this->$Utilisateurs = $Utilisateurs;
+    }
+    public function getUtilisateurs(){
+        return $this->Utilisateurs;
+    }
+
+    $entitymanager->flush();
     
-    private $libellé_fonction;
-
-    /**
-    * @Column(type=string)
-    */
-    private $id_fonction;
+    private $libelle_fonction;
 
 }

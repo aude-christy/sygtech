@@ -1,18 +1,21 @@
 <?php
 
-class interventions 
-{
-    use EntityIndentifierTrait;
+namespace App\Entity;
 
-    
+use Doctrine\ORM\Mapping as ORM;
+use EntityIndentifierTrait;
+
+class Interventions 
+{
+
     /**
-     * @OneTomany(targetEntity="Agences", mappedBy="Interventions")
+     * @ManyToOne(targetEntity="Agences", mappedBy="Interventions")
      */
     private $Agences;
-    
-    public function --construct() 
-    {
 
+    /**
+     * @Column(type=string, nullable=false)
+     */
     private $libellé_intervention;
 
     /**
@@ -28,19 +31,42 @@ class interventions
     /**
     * @Column(type=string)
     */
-
-    private $montant_depense;
-
-    /**
-    * @Column(type=string)
-    */
     private $heure_intervention;
     
     /**
     * @Column(type=string)
     */
-
     private $detail_intervention;
+
+    /**
+    * @Column(type=string)
+    */
+    private $Agences=[];
+    
+    public function --construct()
+    {
+
+        $this->$Agences = new ArrayCollection();
+    }
+
+    public function addAgences
+    (Agences $Agences)
+    {
+
+        $this->Agences[] = $Agences;
+        return $this;
+
+        $em->persist(Agences);
+        $em->flush();
+    }
+
+    public getAgences()
+    {
+
+        return $this->Agences;
+    }
+
+    
 
     
 }

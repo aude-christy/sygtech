@@ -43,6 +43,11 @@ class Agences
     */
     private $latitude;
 
+    public function __construct(Type $var = null)
+    {
+        
+    }
+
 
 
 

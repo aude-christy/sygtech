@@ -1,18 +1,17 @@
 <?php
 
-class rapport extends
+class Rapport extends
 {
     use EntityIndentifierTrait;
     
     /**
-     * @ManyTomany(targetEntity="", mappedBy="")
+     * @ManyTomany(targetEntity="Utilisateurs", mappedBy=" Rapport")
      */
     private $utilisateurs;
 
-    /**
-    * @Column(type=string, nullable=true)
-    */
-    
+   $utilisateurs = new ArrayCollection();
+   $entitymanager->flush();
+   
     private $libellé_rapport;
 
     /**
