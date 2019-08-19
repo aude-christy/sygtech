@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
 class Roles
 {
     use EntityIndentifierTrait;
@@ -10,18 +14,19 @@ class Roles
      */
     private $Utilisateurs;
 
-    public function 
-    setUtilisateurs(Utilisateurs $Utilisateurs)
-    {
-
-        $this->$Utilisateurs = $Utilisateurs;
-    }
-    public function getUtilisateurs(){
-        return $this->Utilisateurs;
-    }
-
-    $entitymanager->flush();
-    
+    /**
+    * @Column(type=string, nullable=true)
+    */
     private $libelle_fonction;
 
+    public function setlibelle_fonction(string $libelle_fonction): void
+    {
+        $this->libelle_fonction = $libelle_fonction;
+    }
+    public function getlibelle_fonction(): ?string
+    {
+        return $this->libelle_fonction;
+    }
+
+    
 }
