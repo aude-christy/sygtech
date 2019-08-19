@@ -16,7 +16,7 @@ class Interventions
     /**
      * @Column(type=string, nullable=false)
      */
-    private $libellé_intervention;
+    private $libelle_intervention;
 
     /**
     * @Column(type=string)
@@ -36,34 +36,63 @@ class Interventions
     /**
     * @Column(type=string)
     */
-    private $detail_intervention;
+    private $Planning;
 
     /**
-    * @Column(type=string)
-    */
-    private $Agences=[];
-    
-    public function --construct()
-    {
+     * @OneTomany(targetEntity="planning", inversedBy="Interventions")
+     */
+    private $detail_intervention;
 
-        $this->$Agences = new ArrayCollection();
+    public function __construct()
+    {
+        $this->$date_intervention = new \DateTime();
     }
 
-    public function addAgences
-    (Agences $Agences)
+    public function getlibelle_intervention(): ?string
     {
+        return $this->libelle_intervention;
+    }
+    public function setlibelle_intervention(string $libelle_intervention): void
+    {
+        $this->libelle_intervention = $libelle_intervention;
+    }
 
-        $this->Agences[] = $Agences;
+    public function gettype_intervention(): ?string
+    {
+        return $this->type_intervention;
+    }
+    public function settype_intervention(string $type_intervention): void
+    {
+        $this->type_intervention = $type_intervention;
+    }
+
+    public function getheure_intervention(): ?heure_intervention
+    {
+        return $this->heure_intervention;
+    }
+    public function setPost(heure_intervention $heure_intervention): void
+    {
+        $this->heure_intervention = $heure_intervention;
+    }
+
+    public function addPlanning
+    (Planning $Planning)
+    {
+        $this->Planning[] = $Planning;
         return $this;
 
-        $em->persist(Agences);
+        $em->persist(Planning);
         $em->flush();
     }
 
-    public getAgences()
+    public function getPlanning(): ?Planning
     {
+        return $this->Planning;
+    }
 
-        return $this->Agences;
+    public function setPlanning(Planning $Planning): void
+    {
+        $this->Planning = $Planning;
     }
 
     
