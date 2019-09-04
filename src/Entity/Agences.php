@@ -24,12 +24,12 @@ class Agences
     private $nom_agence;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="string", length=20)
      */
     private $heure_ouverture;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="string", length=20)
      */
     private $heure_fermeture;
 
@@ -75,24 +75,24 @@ class Agences
         return $this;
     }
 
-    public function getHeureOuverture(): ?\DateTimeInterface
+    public function getHeureOuverture(): ?string
     {
         return $this->heure_ouverture;
     }
 
-    public function setHeureOuverture(\DateTimeInterface $heure_ouverture): self
+    public function setHeureOuverture(string $heure_ouverture): self
     {
         $this->heure_ouverture = $heure_ouverture;
 
         return $this;
     }
 
-    public function getHeureFermeture(): ?\DateTimeInterface
+    public function getHeureFermeture(): ?\DateTime
     {
         return $this->heure_fermeture;
     }
 
-    public function setHeureFermeture(\DateTimeInterface $heure_fermeture): self
+    public function setHeureFermeture(string $heure_fermeture): self
     {
         $this->heure_fermeture = $heure_fermeture;
 
@@ -130,6 +130,7 @@ class Agences
     {
         return $this->demandeInterventions;
     }
+
 
     public function addDemandeIntervention(DemandeIntervention $demandeIntervention): self
     {
