@@ -19,17 +19,17 @@ class Villes
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="nom_ville", type="string", length=255)
      */
     private $nom_ville;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(name="longitude", type="float")
      */
     private $longitude;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(name="lattitude", type="float")
      */
     private $lattitude;
 
@@ -113,5 +113,21 @@ class Villes
         }
 
         return $this;
+    }
+
+    public function __tostring()
+    {
+        return $this->nom_ville;
+    }
+
+    
+    public function setUp() {
+    	$this->hasMany(
+    		'Agences as agences', 
+    		array(
+    			'local' => 'id', 
+    			'foreign' => 'id_agences'
+    		)
+    	);
     }
 }

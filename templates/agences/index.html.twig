@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agences index{% endblock %}
+
+{% block body %}
+    <h1>Liste des Agences</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_agence</th>
+                <th>Heure_ouverture</th>
+                <th>Heure_fermeture</th>
+                <th>Longitude</th>
+                <th>Lattitude</th>
+                <th>Ville</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for agence in agences %}
+            <tr>
+                <td>{{ agence.id }}</td>
+                <td>{{ agence.nomAgence }}</td>
+                <td>{{ agence.heureOuverture }}</td>
+                <td>{{ agence.heureFermeture }}</td>
+                <td>{{ agence.longitude }}</td>
+                <td>{{ agence.lattitude }}</td>
+                <td>{{ agence.Villes.nomville}}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('agences_show', {'id': agence.id}) }}">Detail</a>
+                    <a class="btn btn-primary" href="{{ path('agences_edit', {'id': agence.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('agences_new') }}">Ajouter agence</a>
+{% endblock %}

@@ -36,7 +36,7 @@ class Equipements
     /**
      * @ORM\Column(type="integer")
      */
-    private $quantité;
+    private $quantite;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\RapportsIntervention", mappedBy="admettre")
@@ -89,14 +89,14 @@ class Equipements
         return $this;
     }
 
-    public function getQuantité(): ?int
+    public function getQuantite(): ?int
     {
-        return $this->quantité;
+        return $this->quantite;
     }
 
-    public function setQuantité(int $quantité): self
+    public function setQuantite(int $quantite): self
     {
-        $this->quantité = $quantité;
+        $this->quantite = $quantite;
 
         return $this;
     }
@@ -127,5 +127,10 @@ class Equipements
         }
 
         return $this;
+    }
+
+    public function __tostring()
+    {
+        return $this->type;
     }
 }

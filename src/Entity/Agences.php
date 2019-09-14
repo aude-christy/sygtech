@@ -19,27 +19,27 @@ class Agences
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="nom_agence", type="string", length=255)
      */
     private $nom_agence;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(name="heure_ouverture",type="string", length=255, nullable=false)
      */
     private $heure_ouverture;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(name="heure_fermeture", type="string", length=255, nullable=false)
      */
     private $heure_fermeture;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(name="longitude", type="float")
      */
     private $longitude;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(name="lattitude", type="float")
      */
     private $lattitude;
 
@@ -75,7 +75,7 @@ class Agences
         return $this;
     }
 
-    public function getHeureOuverture(): ?string
+    public function getHeureOuverture() 
     {
         return $this->heure_ouverture;
     }
@@ -87,7 +87,7 @@ class Agences
         return $this;
     }
 
-    public function getHeureFermeture(): ?\DateTime
+    public function getHeureFermeture()
     {
         return $this->heure_fermeture;
     }
@@ -162,5 +162,19 @@ class Agences
         $this->villes = $villes;
 
         return $this;
+    }
+    public function __tostring()
+    {
+        return $this->nom_agence;
+    }
+
+    public function setUp() {
+    	$this->hasOne(
+    		'Villes as villes', 
+    		array(
+    			'local' => 'id', 
+    			'foreign' => 'id_villes'
+    		)
+    	);
     }
 }

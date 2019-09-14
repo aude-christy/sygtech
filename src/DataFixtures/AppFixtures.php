@@ -36,10 +36,10 @@ class AppFixtures extends Fixture
       for($i = 1; $i <= 10; $i++){
       $agences = new Agences();
       $agences->setNomagence($faker->name);
-      $agences->setHeureouverture($faker->dateTimeBetween
-      ($minimum));
-      $agences->setHeurefermeture($faker->dateTimeBetween
-      ($minimum));
+      $agences->setHeureouverture($faker->time($format = 'H:i:s', $max = 'now')
+      );
+      $agences->setHeurefermeture($faker->time($format = 'H:i:s', $max = 'now')
+      );
       $agences->setLongitude($faker->longitude($min = -180, $max = 180));
       $agences->setLattitude($faker->latitude($min = -90, $max = 90));
       
@@ -48,17 +48,16 @@ class AppFixtures extends Fixture
 
       for($k = 1; $k <= 10; $k++){
         $datefin = new DateFin();
-        $datefin->setDate($faker->dateTimeBetween
-        ($minimum));
+        $datefin->setDate($faker->date($format = 'Y-m-d', $max = 'now'));
 
         $manager->persist($datefin);
         }
 
       for($m = 1; $m <= 10; $m++){
           $demandeintervention = new DemandeIntervention();
-          $demandeintervention->setDescriptionproblème($faker->paragraph());
-          $demandeintervention->setDateprevu($faker->dateTimeBetween
-          ($minimum));
+          $demandeintervention->setDescriptionprobleme($faker->paragraph());
+          $demandeintervention->setDateprevu($faker->date($format = 'Y-m-d', $max = 'now')
+          );
           
           $manager->persist($demandeintervention);
           }
@@ -67,7 +66,7 @@ class AppFixtures extends Fixture
       for($n = 1; $n <= 10; $n++){
         $equipements = new Equipements();
         $equipements->setPrixunitaire($faker->randomNumber(2));
-        $equipements->setType($type);
+        $equipements->setType($faker->name);
         $equipements->setDesignation($faker->paragraph());
         $equipements->setQuantite($faker->numberBetween(10,20));
         
@@ -79,9 +78,9 @@ class AppFixtures extends Fixture
           $interventions = new Interventions();
           $interventions->setLibelleintervention($faker->sentence());
           $interventions->setLieuintervention($faker->city);
-          $interventions->setDatedebut($faker->dateTimeBetween
-          ($minimum));
-          $interventions->setEtat($etat);
+          $interventions->setDatedebut($faker->date($format = 'Y-m-d', $max = 'now')
+          );
+          $interventions->setEtat("grave\pas grave");
           
           
           $manager->persist($interventions);
@@ -89,8 +88,8 @@ class AppFixtures extends Fixture
 
       for($j = 1; $j <= 10; $j++){
             $planning = new Planning();
-            $planning->setDate($faker->dateTimeBetween
-            ($minimum));
+            $planning->setDate($faker->date($format = 'Y-m-d', $max = 'now')
+            );
             
             
             $manager->persist($planning);
@@ -109,11 +108,9 @@ class AppFixtures extends Fixture
 
       for($f = 1; $f <= 10; $f++){
         $rapportsintervention = new RapportsIntervention();
-        $rapportsintervention->setLibllerapport($faker->sentence());
+        $rapportsintervention->setLibellerapport($faker->sentence());
         $rapportsintervention->setPhoto($faker->imageUrl());
-        $irapportsintervention->setPiecejointe($piecejointe);
-        $rapportsintervention->setDatefin($faker->dateTimeBetween
-        ($minimum));
+        $rapportsintervention->setPiecejointe($faker->fileExtension);
         
         
         $manager->persist($rapportsintervention);
@@ -129,7 +126,7 @@ class AppFixtures extends Fixture
 
           for($u = 1; $u <= 10; $u++){
             $villes = new Villes();
-            $villes->setNomville($faker->town);
+            $villes->setNomville($faker->city);
             $villes->setLongitude($faker->longitude($min = -180, $max = 180));
             $villes->setLattitude($faker->latitude($min = -90, $max = 90));
             
@@ -151,6 +148,39 @@ class AppFixtures extends Fixture
 
         return $this;
     }
+  /**
+  * Get the description_probleme of this fixture
+  * @return string
+  */
+
+  public function setDescriptionProbleme(string $description_probleme): self
+  {
+      $this->description_probleme = $description_probleme;
+
+      return $this;
+  }
+  /**
+  * Get the quantite of this fixture
+  * @return int
+  */
+
+  public function setQuantite(int $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+  /**
+  * Get the libelle_rapport of this fixture
+  * @return string
+  */
+
+  public function setLibelleRapport(string $libelle_rapport): self
+  {
+      $this->libelle_rapport = $libelle_rapport;
+
+      return $this;
+  }
 
     
 }

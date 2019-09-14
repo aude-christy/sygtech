@@ -14,42 +14,40 @@ class Interventions
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name = "id", type="integer")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name = "libelle_intervention", type="string", length=255)
      */
     private $libelle_intervention;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lieu_intervention;
-
-    /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(name = "datedebut", type="string", length=255)
      */
     private $date_debut;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name = "etat", type="string", length=255)
      */
     private $etat;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Planning", inversedBy="interventions")
+     * * @ORM\JoinColumn(name = "planning", nullable=true)
      */
-    private $est_faite;
+    private $planning;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\DateFin", inversedBy="interventions")
+     * * @ORM\JoinColumn(name = "datefin", nullable=true)
      */
-    private $avoir;
+    private $datefin;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\DemandeIntervention", mappedBy="intervention")
+     * * @ORM\JoinColumn(nullable=true)
      */
     private $demandeInterventions;
 
@@ -75,24 +73,24 @@ class Interventions
         return $this;
     }
 
-    public function getLieuIntervention(): ?string
-    {
-        return $this->lieu_intervention;
-    }
+    //public function getLieuIntervention(): ?string
+    //{
+     //   return $this->lieu_intervention;
+    //}
 
-    public function setLieuIntervention(string $lieu_intervention): self
-    {
-        $this->lieu_intervention = $lieu_intervention;
+   // public function setLieuIntervention(string $lieu_intervention): self
+   // {
+       // $this->lieu_intervention = $lieu_intervention;
 
-        return $this;
-    }
+       // return $this;
+    //}
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getDateDebut()
     {
         return $this->date_debut;
     }
 
-    public function setDateDebut(\DateTimeInterface $date_debut): self
+    public function setDateDebut(string $date_debut): self
     {
         $this->date_debut = $date_debut;
 
@@ -162,4 +160,5 @@ class Interventions
 
         return $this;
     }
+    
 }

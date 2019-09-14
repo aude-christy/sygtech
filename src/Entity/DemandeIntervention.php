@@ -19,7 +19,7 @@ class DemandeIntervention
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=255)
      */
     private $date_prevu;
 
@@ -54,7 +54,7 @@ class DemandeIntervention
         return $this->date_prevu;
     }
 
-    public function setDatePrevu(\DateTimeInterface $date_prevu): self
+    public function setDatePrevu(string $date_prevu): self
     {
         $this->date_prevu = $date_prevu;
 
@@ -63,7 +63,7 @@ class DemandeIntervention
 
     public function getDescriptionProbleme(): ?string
     {
-        return $this->description_probleme;
+       return $this->description_probleme;
     }
 
     public function setDescriptionProbleme(string $description_probleme): self
@@ -124,4 +124,6 @@ class DemandeIntervention
 
         return $this;
     }
+
+    
 }

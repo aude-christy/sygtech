@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formintervention 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Création d'une intervention!!</h1>
+
+    {{ form_start(formintervention) }}
+
+    {{ form_widget(formintervention) }}
+
+    <button type="submit" class="btn btn-success">
+    
+    Ajouter une intervention</button>
+
+    {{ form_end(formintervention) }}
+
+{% endblock %}

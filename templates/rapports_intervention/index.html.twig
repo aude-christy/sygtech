@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RapportsIntervention index{% endblock %}
+
+{% block body %}
+    <h1>RapportsIntervention index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle_rapport</th>
+                <th>Photo</th>
+                <th>Piece_jointe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rapports_intervention in rapports_interventions %}
+            <tr>
+                <td>{{ rapports_intervention.id }}</td>
+                <td>{{ rapports_intervention.libelleRapport }}</td>
+                <td>{{ rapports_intervention.photo }}</td>
+                <td>{{ rapports_intervention.pieceJointe }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('rapports_intervention_show', {'id': rapports_intervention.id}) }}">detail</a>
+                    <a class="btn btn-primary" href="{{ path('rapports_intervention_edit', {'id': rapports_intervention.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('rapports_intervention_new') }}">faire un rapport</a>
+{% endblock %}

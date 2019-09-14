@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Agences{% endblock %}
+
+{% block body %}
+    <h1>Create new Agences</h1>
+
+    {{ include('agences/_form.html.twig') }}
+
+    <a href="{{ path('agences_index') }}">back to list</a>
+{% endblock %}

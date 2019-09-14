@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interventions{% endblock %}
+
+{% block body %}
+    <h1>Interventions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ intervention.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle_intervention</th>
+                <td>{{ intervention.libelleIntervention }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ intervention.dateDebut }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ intervention.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('interventions_index') }}">back to list</a>
+
+    <a href="{{ path('interventions_edit', {'id': intervention.id}) }}">edit</a>
+
+    {{ include('interventions/_delete_form.html.twig') }}
+{% endblock %}
